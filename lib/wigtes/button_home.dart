@@ -1,21 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ButtonHome extends StatelessWidget {
+class ButtonHome extends StatefulWidget {
   const ButtonHome({super.key});
+
+  @override
+  State<ButtonHome> createState() => _ButtonHomeState();
+}
+
+class _ButtonHomeState extends State<ButtonHome> {
+  final FocusNode _focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: EdgeInsets.all(5.h),
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(6.r),
       ),
-      child: const Text(
-        'Digite seu texto',
-        textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+      child: Center(
+        child: TextField(
+          autofocus: true,
+          focusNode: _focusNode,
+          textAlign: TextAlign.center,
+          decoration: const InputDecoration(
+            hintText: "Digite seu texto",
+            hintStyle: TextStyle(fontWeight: FontWeight.bold),
+            border: InputBorder.none,
+          ),
+        ),
       ),
     );
   }

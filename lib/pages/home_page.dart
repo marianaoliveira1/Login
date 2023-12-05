@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login/utils/default_background.dart';
 import 'package:login/wigtes/button_home.dart';
 import 'package:login/wigtes/politica_privacidade.dart';
@@ -17,8 +18,7 @@ class _HomePageState extends State<HomePage> {
       body: Stack(children: [
         const DefaultBackground(),
         Container(
-          margin: const EdgeInsets.all(28),
-          padding: const EdgeInsets.only(left: 25, right: 25),
+          margin: EdgeInsets.all(28.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -27,32 +27,42 @@ class _HomePageState extends State<HomePage> {
               ),
               Expanded(
                 child: Container(
+                  padding: EdgeInsets.only(left: 15.w, right: 15.w),
                   color: Colors.white,
-                  child: const Column(
+                  child: Column(
                     children: [
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 20.h,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             "Texto Digitado 1",
-                            style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                            style: TextStyle(color: Colors.black, fontSize: 18.sp, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            width: 10.h,
+                          ),
+                          Icon(
+                            Icons.border_color,
+                            color: Colors.black,
+                            size: 25.h,
                           ),
                           Icon(
                             Icons.delete,
                             color: Colors.red,
-                            size: 30,
-                          )
+                            size: 25.h,
+                          ),
                         ],
                       ),
+                      const Divider(),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 50,
+              SizedBox(
+                height: 50.h,
               ),
               const ButtonHome(),
               Expanded(

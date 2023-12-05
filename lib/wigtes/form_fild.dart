@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyFormField extends StatelessWidget {
   final Icon icon;
-  final TextEditingController controller;
+  final String? Function(String?)? validator;
   final bool obscureText;
 
-  const MyFormField({Key? key, required this.controller, required this.obscureText, required this.icon}) : super(key: key);
+  const MyFormField({
+    Key? key,
+    required this.obscureText,
+    required this.icon,
+    required this.validator,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var offset2 = const Offset(0, 3);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: EdgeInsets.symmetric(horizontal: 16.0.h),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(10.r),
         boxShadow: [
           BoxShadow(
             color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.2),
@@ -24,8 +30,8 @@ class MyFormField extends StatelessWidget {
           ),
         ],
       ),
-      child: TextField(
-        controller: controller,
+      child: TextFormField(
+        validator: validator,
         obscureText: obscureText,
         style: const TextStyle(color: Colors.black), // Cor do texto
         decoration: InputDecoration(

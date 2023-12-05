@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ButtonLogin extends StatelessWidget {
-  const ButtonLogin({super.key});
+  final VoidCallback onSubmit;
+  const ButtonLogin({super.key, required this.onSubmit});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        padding: const EdgeInsets.only(left: 65, right: 65, bottom: 13, top: 13),
-        decoration: BoxDecoration(
-          color: const Color(0xFF44bd6e),
-          borderRadius: BorderRadius.circular(50),
+    return ElevatedButton(
+      onPressed: onSubmit,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xFF44bd6e),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50.r),
         ),
-        child: const Text(
-          'Entrar',
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white, fontSize: 18),
+        padding: EdgeInsets.only(
+          left: 65.w,
+          right: 65.w,
+          bottom: 15.h,
+          top: 15.h,
+        ),
+        textStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 18.sp,
+        ),
+      ),
+      child: Text(
+        'Entrar',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 18.sp,
         ),
       ),
     );
