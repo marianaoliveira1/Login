@@ -1,12 +1,21 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:login/firebase_options.dart';
 import 'package:login/pages/home_page.dart';
 
 import 'package:login/pages/login_page.dart';
+import 'package:login/stores/login.dart';
 
-void main() {
+final counter = StoreLogin(); // Instantiate the store
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
+
+StoreLogin storeLogin = StoreLogin();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -20,7 +29,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Todo List - Teste',
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        routes: {
+          '/login': (context) => const LoginPage(),
+          '/home': (context) => const HomePage(),
+        },
+        initialRoute: '/login',
       ),
     );
   }

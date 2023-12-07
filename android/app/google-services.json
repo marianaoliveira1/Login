@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "331630389707",
+    "project_id": "loginteste-cafe5",
+    "storage_bucket": "loginteste-cafe5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331630389707:android:f17b87629bb50f97912e4e",
+        "android_client_info": {
+          "package_name": "com.example.login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFAUEkq6rpzUelb4Dqn3cq5Jy8Dq_koAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

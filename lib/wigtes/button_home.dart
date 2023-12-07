@@ -13,22 +13,27 @@ class _ButtonHomeState extends State<ButtonHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(5.h),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(6.r),
-      ),
-      child: Center(
-        child: TextField(
-          autofocus: true,
-          focusNode: _focusNode,
-          textAlign: TextAlign.center,
-          decoration: const InputDecoration(
-            hintText: "Digite seu texto",
-            hintStyle: TextStyle(fontWeight: FontWeight.bold),
-            border: InputBorder.none,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(_focusNode);
+      },
+      child: Container(
+        padding: EdgeInsets.all(5.h),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(6.r),
+        ),
+        child: Center(
+          child: TextField(
+            autofocus: true,
+            focusNode: _focusNode,
+            textAlign: TextAlign.center,
+            decoration: const InputDecoration(
+              hintText: "Digite seu texto",
+              hintStyle: TextStyle(fontWeight: FontWeight.bold),
+              border: InputBorder.none,
+            ),
           ),
         ),
       ),

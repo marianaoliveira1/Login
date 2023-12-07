@@ -1,4 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:login/data/firebase.dart';
+import 'package:login/main.dart';
 import 'package:login/pages/home_page.dart';
 import 'package:login/utils/default_background.dart';
 import 'package:login/utils/validacao.dart';
@@ -15,6 +22,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -23,61 +32,75 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           const DefaultBackground(),
-          Container(
-            margin: const EdgeInsets.all(28),
-            padding: const EdgeInsets.only(left: 25, right: 25),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    height: 250,
-                  ),
-                  const TitleLabel(text: "Usuário"),
-                  const SizedBox(
-                    height: 6,
-                  ),
-                  const MyFormField(
-                    validator: Validation.validationLogin,
-                    icon: Icon(Icons.person),
-                    obscureText: false,
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  const TitleLabel(text: "Senha"),
-                  const SizedBox(
-                    height: 6,
-                  ),
-                  const MyFormField(
-                    validator: Validation.validationSenha,
-                    icon: Icon(
-                      Icons.lock,
+          SingleChildScrollView(
+            child: Container(
+              margin: const EdgeInsets.all(28),
+              padding: const EdgeInsets.only(left: 25, right: 25),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 250.h,
                     ),
-                    obscureText: true,
-                  ),
-                  const SizedBox(
-                    height: 45,
-                  ),
-                  Center(
-                    child: ButtonLogin(
-                      onSubmit: () {
-                        if (_formKey.currentState!.validate()) {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => HomePage(),
-                            ),
-                          );
-                        }
-                      },
+                    const TitleLabel(text: "Usuário"),
+                    const SizedBox(
+                      height: 6,
                     ),
-                  ),
-                  Expanded(
-                    child: Container(),
-                  ),
-                  const PoliticaDePrivacidade(),
-                ],
+                    MyFormField(
+                      controller: emailController,
+                      validator: Validation.validationLogin,
+                      icon: const Icon(Icons.person),
+                      obscureText: false,
+                    ),
+                    SizedBox(
+                      height: 25.h,
+                    ),
+                    const TitleLabel(text: "Senha"),
+                    SizedBox(
+                      height: 6.h,
+                    ),
+                    MyFormField(
+                      controller: senhaController,
+                      validator: Validation.validationSenha,
+                      icon: const Icon(
+                        Icons.lock,
+                      ),
+                      obscureText: true,
+                    ),
+                    SizedBox(
+                      height: 45.h,
+                    ),
+                    Center(
+                      child: ButtonLogin(
+                        onSubmit: () async {
+                          if (_formKey.currentState!.validate()) {
+                            var email = emailController.text;
+                            var senha = senhaController.text;
+
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              },
+                            );
+
+                            await registerOrLogin(
+                              email,
+                              senha,
+                            );
+
+                            Navigator.pushNamed(context, '/home');
+                          }
+                        },
+                      ),
+                    ),
+                    const PoliticaDePrivacidade(),
+                  ],
+                ),
               ),
             ),
           )

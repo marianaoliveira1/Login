@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:login/main.dart';
 import 'package:login/utils/default_background.dart';
 import 'package:login/wigtes/button_home.dart';
 import 'package:login/wigtes/politica_privacidade.dart';
@@ -22,6 +25,24 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Observer(
+                    builder: (_) => Text(
+                      '${storeLogin.credential?.user!.email}',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      FirebaseAuth.instance.signOut();
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    child: const Icon(Icons.logout, color: Colors.black),
+                  ),
+                ],
+              ),
               const SizedBox(
                 height: 50,
               ),

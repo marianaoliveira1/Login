@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyFormField extends StatelessWidget {
   final Icon icon;
+  final TextEditingController controller;
   final String? Function(String?)? validator;
   final bool obscureText;
 
@@ -11,6 +12,7 @@ class MyFormField extends StatelessWidget {
     required this.obscureText,
     required this.icon,
     required this.validator,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -31,6 +33,7 @@ class MyFormField extends StatelessWidget {
         ],
       ),
       child: TextFormField(
+        controller: controller,
         validator: validator,
         obscureText: obscureText,
         style: const TextStyle(color: Colors.black), // Cor do texto
