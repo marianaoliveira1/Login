@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class PoliticaDePrivacidade extends StatelessWidget {
-  const PoliticaDePrivacidade({
+class DefaultPoliticaDePrivacidade extends StatelessWidget {
+  const DefaultPoliticaDePrivacidade({
     Key? key,
   }) : super(key: key);
 

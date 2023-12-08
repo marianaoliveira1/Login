@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:login/features/information/input_information.dart';
 import 'package:login/main.dart';
 import 'package:login/utils/default_background.dart';
-import 'package:login/wigtes/button_home.dart';
-import 'package:login/wigtes/politica_privacidade.dart';
+import 'package:login/widgtes/default_politica_privacidade.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -70,10 +70,37 @@ class _HomePageState extends State<HomePage> {
                             color: Colors.black,
                             size: 25.h,
                           ),
-                          Icon(
-                            Icons.delete,
-                            color: Colors.red,
-                            size: 25.h,
+                          GestureDetector(
+                            onTap: () {
+                              showDialog<void>(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text('Deseja excluir?'),
+                                    content: const Text('Deseja excluir o texto digitado?'),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('Não'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('Sim'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            child: Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                              size: 25.h,
+                            ),
                           ),
                         ],
                       ),
@@ -85,11 +112,11 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 50.h,
               ),
-              const ButtonHome(),
+              InputInformation(),
               Expanded(
                 child: Container(),
               ),
-              const PoliticaDePrivacidade()
+              const DefaultPoliticaDePrivacidade()
             ],
           ),
         )

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ButtonHome extends StatefulWidget {
-  const ButtonHome({super.key});
+class InputInformation extends StatelessWidget {
 
-  @override
-  State<ButtonHome> createState() => _ButtonHomeState();
-}
+  InputInformation({
+    super.key,
+  });
 
-class _ButtonHomeState extends State<ButtonHome> {
   final FocusNode _focusNode = FocusNode();
 
   @override
@@ -34,6 +32,9 @@ class _ButtonHomeState extends State<ButtonHome> {
               hintStyle: TextStyle(fontWeight: FontWeight.bold),
               border: InputBorder.none,
             ),
+            onSubmitted: (value) {
+              
+            },
           ),
         ),
       ),

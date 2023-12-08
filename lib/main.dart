@@ -5,9 +5,12 @@ import 'package:login/firebase_options.dart';
 import 'package:login/pages/home_page.dart';
 
 import 'package:login/pages/login_page.dart';
+import 'package:login/stores/information.dart';
 import 'package:login/stores/login.dart';
 
-final counter = StoreLogin(); // Instantiate the store
+final counter = StoreLogin();
+
+final information = StoreInformation(description, id);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

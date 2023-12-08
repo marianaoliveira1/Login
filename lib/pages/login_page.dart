@@ -1,18 +1,15 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login/data/firebase.dart';
-import 'package:login/main.dart';
-import 'package:login/pages/home_page.dart';
+
 import 'package:login/utils/default_background.dart';
 import 'package:login/utils/validacao.dart';
-import 'package:login/wigtes/button_login.dart';
-import 'package:login/wigtes/form_fild.dart';
-import 'package:login/wigtes/politica_privacidade.dart';
-import 'package:login/wigtes/title_label.dart';
+import 'package:login/features/login/button.dart';
+import 'package:login/widgtes/default_form_fild.dart';
+import 'package:login/widgtes/default_politica_privacidade.dart';
+import 'package:login/features/login/title_label.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -48,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 6,
                     ),
-                    MyFormField(
+                    DefaultFormField(
                       controller: emailController,
                       validator: Validation.validationLogin,
                       icon: const Icon(Icons.person),
@@ -61,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(
                       height: 6.h,
                     ),
-                    MyFormField(
+                    DefaultFormField(
                       controller: senhaController,
                       validator: Validation.validationSenha,
                       icon: const Icon(
@@ -80,6 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                             var senha = senhaController.text;
 
                             showDialog(
+                              barrierDismissible: false,
                               context: context,
                               builder: (BuildContext context) {
                                 return const Center(
@@ -98,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       ),
                     ),
-                    const PoliticaDePrivacidade(),
+                    const DefaultPoliticaDePrivacidade(),
                   ],
                 ),
               ),

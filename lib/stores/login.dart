@@ -12,7 +12,7 @@ abstract class _StoreLogin with Store {
 
   @action
   void chenageCredential(UserCredential newCredential) {
-    credential = newCredential;
+    credential = newCredential; 
   }
 }
 

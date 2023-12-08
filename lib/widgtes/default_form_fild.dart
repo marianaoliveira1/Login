@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MyFormField extends StatelessWidget {
+class DefaultFormField extends StatelessWidget {
   final Icon icon;
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final bool obscureText;
 
-  const MyFormField({
+  const DefaultFormField({
     Key? key,
     required this.obscureText,
     required this.icon,
