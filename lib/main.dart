@@ -2,23 +2,23 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login/firebase_options.dart';
-import 'package:login/pages/home_page.dart';
-
-import 'package:login/pages/login_page.dart';
-import 'package:login/stores/information.dart';
+import 'package:login/pages/home.dart';
+import 'package:login/pages/login.dart';
+import 'package:login/stores/information/information_list.dart';
 import 'package:login/stores/login.dart';
 
-final counter = StoreLogin();
-
-final information = StoreInformation(description, id);
+final storeInformations = StoreInformationList();
+StoreLogin storeLogin = StoreLogin();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(
+    const MyApp(),
+  );
 }
-
-StoreLogin storeLogin = StoreLogin();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -41,3 +41,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

@@ -19,10 +19,9 @@ class DefaultPoliticaDePrivacidade extends StatelessWidget {
   }
 
   void _abrirURL(String url) async {
-    // ignore: deprecated_member_use
-    if (await canLaunch(url)) {
-      // ignore: deprecated_member_use
-      await launch(url);
+    Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
     } else {
       throw 'Não foi possível abrir o URL: $url';
     }

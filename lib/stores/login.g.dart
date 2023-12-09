@@ -13,13 +13,13 @@ mixin _$StoreLogin on _StoreLogin, Store {
       Atom(name: '_StoreLogin.credential', context: context);
 
   @override
-  UserCredential? get credential {
+  User? get credential {
     _$credentialAtom.reportRead();
     return super.credential;
   }
 
   @override
-  set credential(UserCredential? value) {
+  set credential(User? value) {
     _$credentialAtom.reportWrite(value, super.credential, () {
       super.credential = value;
     });
@@ -29,7 +29,7 @@ mixin _$StoreLogin on _StoreLogin, Store {
       ActionController(name: '_StoreLogin', context: context);
 
   @override
-  void chenageCredential(UserCredential newCredential) {
+  void chenageCredential(User? newCredential) {
     final _$actionInfo = _$_StoreLoginActionController.startAction(
         name: '_StoreLogin.chenageCredential');
     try {

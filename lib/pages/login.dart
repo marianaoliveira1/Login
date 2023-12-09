@@ -3,13 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login/data/firebase.dart';
-
+import 'package:login/features/login/button.dart';
+import 'package:login/features/login/title_label.dart';
+import 'package:login/pages/home.dart';
 import 'package:login/utils/default_background.dart';
 import 'package:login/utils/validacao.dart';
-import 'package:login/features/login/button.dart';
 import 'package:login/widgtes/default_form_fild.dart';
 import 'package:login/widgtes/default_politica_privacidade.dart';
-import 'package:login/features/login/title_label.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -22,6 +22,12 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController senhaController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    shouldHomeInputStayFocuded = false;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -29,11 +29,11 @@ mixin _$StoreInformationList on _StoreInformationList, Store {
       ActionController(name: '_StoreInformationList', context: context);
 
   @override
-  void addTodo(String description, String id) {
+  void addInformations(String description, String id) {
     final _$actionInfo = _$_StoreInformationListActionController.startAction(
-        name: '_StoreInformationList.addTodo');
+        name: '_StoreInformationList.addInformations');
     try {
-      return super.addTodo(description, id);
+      return super.addInformations(description, id);
     } finally {
       _$_StoreInformationListActionController.endAction(_$actionInfo);
     }
@@ -45,6 +45,17 @@ mixin _$StoreInformationList on _StoreInformationList, Store {
         name: '_StoreInformationList.removeTodo');
     try {
       return super.removeTodo(information);
+    } finally {
+      _$_StoreInformationListActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void updateTodoDescription(StoreInformation information, String description) {
+    final _$actionInfo = _$_StoreInformationListActionController.startAction(
+        name: '_StoreInformationList.updateTodoDescription');
+    try {
+      return super.updateTodoDescription(information, description);
     } finally {
       _$_StoreInformationListActionController.endAction(_$actionInfo);
     }
