@@ -102,6 +102,9 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       ),
                     ),
+                    Container(
+                      height: 0.15.sh,
+                    ),
                     const DefaultPoliticaDePrivacidade(),
                   ],
                 ),
